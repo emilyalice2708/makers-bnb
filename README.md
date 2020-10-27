@@ -15,6 +15,6 @@ I'd like to list a space.
 ```
 
 Database:
-1. CREATE DATABASE makers_bnb_manager
+1. CREATE DATABASE makers_bnb_manager;
 2. Follow instruction form migration files sql.
  
