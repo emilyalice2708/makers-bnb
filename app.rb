@@ -12,5 +12,8 @@ class BnbManager < Sinatra::Base
   get '/spaces' do
     connection = PG.connect(dbname: 'makers_bnb_manager_test')
     @result = connection.exec("SELECT * FROM spaces;")
+    p @result
     erb :'/spaces/index'
+  end
+
 end
