@@ -20,5 +20,5 @@ describe Space do
       space = Space.create(name: "Cozy Cottage")
       expect(Space.all).to include 'Cozy Cottage'      
     end
-  end
+  end 
 end
