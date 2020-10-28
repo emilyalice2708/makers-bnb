@@ -18,4 +18,15 @@ class BnbManager < Sinatra::Base
     erb :'/spaces/index'
   end
 
+  get '/spaces/new' do
+    erb :'/spaces/new'
+  end
+
+  post '/spaces' do
+    connection = PG.connect(dbname: 'makers_bnb_manager_test')
+    connection.exec("INSERT INTO spaces (name) VALUES('#{params[:space_name]}');")
+
+    redirect to '/spaces'
+  end
+
 end
