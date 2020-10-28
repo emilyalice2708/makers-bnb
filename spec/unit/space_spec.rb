@@ -3,22 +3,23 @@ require 'pg'
 describe Space do
   describe '.all' do
     it 'returns all spaces' do
-      connection = PG.connect(dbname: 'makers_bnb_manager_test')
-
-      connection.exec("INSERT INTO spaces (name) VALUES ('Private room rotherhithe');")
-      connection.exec("INSERT INTO spaces (name) VALUES ('Entire apartment in westminster');")
-      connection.exec("INSERT INTO spaces (name) VALUES ('Private room westminster');")
-  
-      expect(Space.all).to include 'Private room rotherhithe'
-      expect(Space.all).to include 'Entire apartment in westminster'
-      expect(Space.all).to include 'Private room westminster'
+      new_space = Space.create(name: 'Private room rotherhithe')
+      Space.create(name:'Entire apartment in westminster')
+      Space.create(name: 'Private room westminster')
+      
+      all_spaces = Space.all
+      expect(all_spaces).to be_a Array
+      expect(all_spaces.length).to eq 3
+      expect(all_spaces.first).to be_a Space 
+      expect(all_spaces.first.id).to eq new_space.id
+      expect(all_spaces.first.name).to eq "Private room rotherhithe"
     end
   end
 
   describe '.create' do
     it 'creates a new space' do
       space = Space.create(name: "Cozy Cottage")
-      expect(Space.all).to include 'Cozy Cottage'      
+      expect(space).to be_a Space   
     end
   end 
 end
