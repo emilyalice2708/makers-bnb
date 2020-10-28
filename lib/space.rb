@@ -12,4 +12,9 @@ class Space
     end
   end
 
+  def self.create(name:)
+    connection = PG.connect(dbname: 'makers_bnb_manager_test')
+    connection.exec("INSERT INTO spaces (name) VALUES('#{name}');")
+  end
+
 end

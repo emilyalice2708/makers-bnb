@@ -4,6 +4,7 @@ describe Space do
   describe '.all' do
     it 'returns all spaces' do
       connection = PG.connect(dbname: 'makers_bnb_manager_test')
+
       connection.exec("INSERT INTO spaces (name) VALUES ('Private room rotherhithe');")
       connection.exec("INSERT INTO spaces (name) VALUES ('Entire apartment in westminster');")
       connection.exec("INSERT INTO spaces (name) VALUES ('Private room westminster');")
@@ -16,7 +17,8 @@ describe Space do
 
   describe '.create' do
     it 'creates a new space' do
-      
+      space = Space.create(name: "Cozy Cottage")
+      expect(Space.all).to include 'Cozy Cottage'      
     end
   end
 end

@@ -23,9 +23,9 @@ class BnbManager < Sinatra::Base
   end
 
   post '/spaces' do
-    connection = PG.connect(dbname: 'makers_bnb_manager_test')
-    connection.exec("INSERT INTO spaces (name) VALUES('#{params[:space_name]}');")
+    Space.create(name: params[:space_name])
 
+    
     redirect to '/spaces'
   end
 
