@@ -3,6 +3,7 @@ require 'pg'
 require_relative './lib/space'
 require_relative './database_connection.rb'
 require_relative './lib/connection'
+require_relative './lib/user.rb'
 
 class BnbManager < Sinatra::Base
   enable :sessions
@@ -36,6 +37,7 @@ class BnbManager < Sinatra::Base
 
   post '/users' do
     session['display_name'] = params['display_name']
+    User.create(email: params['email'], password: params['password'], display_name: params['display_name'])
 
     redirect '/spaces'
   end

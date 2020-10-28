@@ -1,3 +1,7 @@
+require 'pg'
+require_relative 'connection'
+require_relative '../database_connection.rb'
+
 class User
 
   def self.create(email:, password:, display_name:)
