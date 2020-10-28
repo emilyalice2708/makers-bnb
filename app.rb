@@ -5,6 +5,7 @@ require_relative './database_connection.rb'
 require_relative './lib/connection'
 
 class BnbManager < Sinatra::Base
+  enable :sessions
 
   run! if app_file == $0
 
@@ -14,7 +15,7 @@ class BnbManager < Sinatra::Base
 
   get '/spaces' do
     @result = Space.all
-    p @result
+    @display_name = session['display_name']
     erb :'/spaces/index'
   end
 
@@ -28,5 +29,16 @@ class BnbManager < Sinatra::Base
     
     redirect to '/spaces'
   end
+
+  get '/users/new' do
+    erb :'users/new'
+  end
+
+  post '/users' do
+    session['display_name'] = params['display_name']
+
+    redirect '/spaces'
+  end
+
 
 end
