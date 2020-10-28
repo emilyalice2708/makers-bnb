@@ -1,6 +1,8 @@
 require 'sinatra/base'
 require 'pg'
 require_relative './lib/space'
+require_relative './database_connection.rb'
+require_relative './lib/connection'
 
 class BnbManager < Sinatra::Base
 
@@ -12,6 +14,7 @@ class BnbManager < Sinatra::Base
 
   get '/spaces' do
     @result = Space.all
+    p @result
     erb :'/spaces/index'
   end
 
