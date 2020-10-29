@@ -2,6 +2,6 @@ require './lib/connection.rb'
 
 if ENV['ENVIRONMENT'] == 'test'
     Connection.connect('makers_bnb_manager_test')
-  else
+else
     Connection.connect('makers_bnb_manager')
-  end
+end

@@ -1,12 +1,12 @@
+
+<% @result.each do |space_object|%>
+  <%=space_object.name%><%=space_object.description%>
+<%end%>
+
  <% if @display_name %>
   <h1> Welcome, <%= @display_name %></h1>
 <% end %>
  
- 
- <% @result.each do |name|%>
-  <%=name%>
-<%end%>
-
 <form action='/spaces/new' method='get'>
   <input type='submit' value='Add Space'>
 </form>
