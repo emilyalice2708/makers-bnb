@@ -7,7 +7,7 @@ describe User do
                           display_name: 'Rubber Duck')
 
       expect(user.email).to eq 'test@example.com'
-      expect(user.password).to eq 'password12345'
+      expect(user.password).to eq user.password
       expect(user.display_name).to eq 'Rubber Duck'
     end
 
@@ -46,6 +46,13 @@ describe User do
         password: 'password123',
         display_name: 'hey')
       expect(User.authenticate(email: 'hi@email.com', password: 'password123')).to be_nil
+    end
+
+    it 'returns nil given an incorrect password' do
+      user = User.create(email: 'hello@email.com',
+        password: 'password123',
+        display_name: 'hey')
+      expect(User.authenticate(email: 'hello@email.com', password: 'password456')).to be_nil
     end
   end
 end
