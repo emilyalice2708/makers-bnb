@@ -40,4 +40,17 @@ describe Space do
       expect(space.user_name).to eq "Rubber Duck"
     end
   end
+
+  describe '.find' do
+    it 'returns the space' do
+      user = User.create(email: 'test@example.com',
+        password: 'password12345',
+        display_name: 'Rubber Duck')
+      space = Space.create(name: "Cozy Cottage", description: "Nice walks around", user_id: user.id)
+      found_space = Space.find(id: space.id)
+      expect(found_space.id).to eq space.id
+      expect(found_space.name).to eq space.name 
+      expect(found_space.description).to eq space.description
+    end
+  end
 end

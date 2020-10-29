@@ -10,7 +10,7 @@ feature 'adding spaces' do
     fill_in :description, with: "Nice walks near by"
     click_button("Submit")
 
-    expect(page).to have_button('Cozy Cottage')
+    expect(page).to have_link('Cozy Cottage')
   end
 
   scenario 'user can not add space before signing up' do
