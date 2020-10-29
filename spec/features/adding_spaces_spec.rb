@@ -8,9 +8,11 @@ feature 'adding spaces' do
 
     fill_in :space_name, with: "Cozy Cottage"
     fill_in :description, with: "Nice walks near by"
+    fill_in :price, with: 50
     click_button("Submit")
 
     expect(page).to have_link('Cozy Cottage')
+    expect(page).to have_content('50')
   end
 
   scenario 'user can not add space before signing up' do
