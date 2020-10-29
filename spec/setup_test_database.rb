@@ -5,5 +5,5 @@ def setup_test_database
 
   Connection.connect('makers_bnb_manager_test')
 
-  Connection.query("TRUNCATE spaces;")
+  Connection.query("TRUNCATE spaces, users;")
 end
