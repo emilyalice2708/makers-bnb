@@ -11,4 +11,17 @@ describe User do
       expect(user.display_name).to eq 'Rubber Duck'
     end
   end
+
+  describe '.find' do
+    it 'returns a user' do
+      user = User.create(email: 'hello@email.com',
+                          password: 'password123',
+                          display_name: 'hey')
+      found_user = User.find(id: user.id)
+      expect(found_user.id).to eq user.id
+      expect(found_user.display_name).to eq user.display_name
+      expect(found_user.password).to eq user.password
+      expect(found_user.email).to eq user.email
+    end
+  end
 end
