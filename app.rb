@@ -14,9 +14,6 @@ class BnbManager < Sinatra::Base
 
   get '/spaces' do
     @result = Space.all
-    ## Before, result looked like: ["room in rotherhithe", "room in westiminster"]
-    ## Now, result looks like: [space_object_1, space_object_2]
-    p @result
     erb :'/spaces/index'
   end
 
