@@ -5,12 +5,12 @@
 
  <% if @user %>
   <h1> Welcome, <%= @user.display_name %></h1>
-<% end %>
 
 <form action='/spaces/new' method='get'>
   <input type='submit' value='Add Space'>
 </form>
 
+<% end %>
 <form action="/users/new" method="get">
   <input type="submit" value="Sign up" />
 </form>

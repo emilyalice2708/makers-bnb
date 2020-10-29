@@ -17,8 +17,6 @@ class BnbManager < Sinatra::Base
   get '/spaces' do
     @result = Space.all
     @user = User.find(id: session['id'])
-    # @display_name = session['display_name']
-    # @display_name = @user.display_name
     erb :'/spaces/index'
   end
 
@@ -38,7 +36,6 @@ class BnbManager < Sinatra::Base
   end
 
   post '/users' do
-    session['display_name'] = params['display_name']
     @user = User.create(email: params['email'], password: params['password'], display_name: params['display_name'])
     session['id'] = @user.id
     redirect '/spaces'
