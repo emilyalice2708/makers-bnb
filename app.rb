@@ -49,4 +49,18 @@ class BnbManager < Sinatra::Base
     erb :'spaces/view_space'
   end
 
+  get '/sessions/new' do
+    erb:'sessions/new'
+  end
+
+  post '/sessions' do
+
+    result = Connection.query("SELECT * FROM users WHERE email = '#{params[:email]}';")
+    user = User.new(id: result[0]['id'], email: result[0]['email'], password: result[0]['password'], display_name: result[0]['display_name'])
+    session[:user_id] = user.id
+
+
+    redirect '/spaces'
+  end
+
 end
