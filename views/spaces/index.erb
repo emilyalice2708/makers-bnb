@@ -10,6 +10,9 @@
 <form action='/spaces/new' method='get'>
   <input type='submit' value='Add Space'>
 </form>
+<form action="/sessions/destroy" method="post">
+  <input type="submit" value="Sign out" />
+</form>
 
 <% end %>
 <% unless @user %>
