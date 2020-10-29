@@ -1,8 +1,8 @@
 feature 'adding spaces' do
   scenario 'user can add a space after they signed up' do
-    
+
     sign_up
-    
+
     click_button("Add Space")
     expect(current_path).to eq "/spaces/new"
 
@@ -10,8 +10,7 @@ feature 'adding spaces' do
     fill_in :description, with: "Nice walks near by"
     click_button("Submit")
 
-    expect(page).to have_content("Cozy Cottage")
-    expect(page).to have_content("Nice walks near by")
+    expect(page).to have_button('Cozy Cottage')
   end
 
   scenario 'user can not add space before signing up' do

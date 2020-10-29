@@ -1,8 +1,9 @@
-
+<ul>
 <% @result.each do |space_object|%>
-  <%=space_object.name%><%=space_object.description%><%=space_object.user_name%>
+  <li> <%=space_object.name%><%=space_object.user_name%>
 <%end%>
-
+</li>
+</ul>
  <% if @user %>
   <h1> Welcome, <%= @user.display_name %></h1>
 
