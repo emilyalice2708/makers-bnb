@@ -61,4 +61,9 @@ class BnbManager < Sinatra::Base
     redirect '/spaces'
   end
 
+  post '/sessions/destroy' do
+    session.clear
+    redirect('/spaces')
+  end
+
 end

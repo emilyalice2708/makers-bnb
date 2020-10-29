@@ -10,9 +10,7 @@ feature 'authentification' do
   end
 
   scenario 'a user can sign out' do
-    user = User.create(email: 'test@example.com',
-                        password: 'password12345',
-                        display_name: 'Rubber Duck')
+    sign_up
 
 
     visit '/sessions/new'
@@ -21,7 +19,7 @@ feature 'authentification' do
     fill_in(:password, with: 'password123')
 
     click_button('Submit')
-
+    expect(page).to have_content 'Welcome, Rubber Duck'
     click_button('Sign out')
 
     expect(page).not_to have_content 'Welcome, Rubber Duck'
