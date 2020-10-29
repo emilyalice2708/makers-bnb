@@ -28,7 +28,7 @@ class Space
 
   def self.create(name:, description:, user_id:, price:)
     ## RETURNING id, name so that we can use them in Space.new below...
-    result = Connection.query("INSERT INTO spaces (name, description, user_id, price) VALUES('#{name}', '#{description}', '#{user_id}', #{price} ) RETURNING id, name, description, user_id, price;")
+    result = Connection.query("INSERT INTO spaces (name, description, user_id, price) VALUES('#{name}', '#{description}', '#{user_id}', '#{price}' ) RETURNING id, name, description, user_id, price;")
     ## Create a new space object using the information we just inserted:
     Space.new(id: result[0]['id'],
       name: result[0]['name'],
