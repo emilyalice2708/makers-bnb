@@ -18,9 +18,9 @@ class User
     return nil unless id
 
     result = Connection.query("SELECT * FROM users WHERE id = #{id}")
-    User.new(id: result[0]['id'], 
-      email: result[0]['email'], 
-      password: result[0]['password'], 
+    User.new(id: result[0]['id'],
+      email: result[0]['email'],
+      password: result[0]['password'],
       display_name: result[0]['display_name']
     )
   end
@@ -31,5 +31,14 @@ class User
     @email = email
     @password = password
     @display_name = display_name
+  end
+
+  def self.authenticate(email:, password:)
+    result = Connection.query("SELECT * FROM users WHERE email = '#{email}'")
+    User.new(id: result[0]['id'],
+      email: result[0]['email'],
+      password: result[0]['password'],
+      display_name: result[0]['display_name']
+    )
   end
 end
