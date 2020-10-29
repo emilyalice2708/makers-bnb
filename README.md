@@ -22,14 +22,14 @@ I would like to be able to list multiple properties.
 
 ```
 As a user
-So that only I can post my properties
-I'd like to be able to log in and log out.
+So that I can see the details of the properties
+I would like to be able to click on a name and see a description.
 ```
 
 ```
 As a user
-So that I can see the details of the properties
-I would like to be able to click on a name and see a description.
+So that only I can post my properties
+I'd like to be able to log in and log out.
 ```
 
 Database:
