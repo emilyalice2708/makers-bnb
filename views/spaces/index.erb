@@ -1,16 +1,18 @@
 
 <% @result.each do |space_object|%>
-  <%=space_object.name%><%=space_object.description%>
+  <%=space_object.name%><%=space_object.description%><%=space_object.user_name%>
 <%end%>
 
- <% if @display_name %>
-  <h1> Welcome, <%= @display_name %></h1>
-<% end %>
- 
+ <% if @user %>
+  <h1> Welcome, <%= @user.display_name %></h1>
+
 <form action='/spaces/new' method='get'>
   <input type='submit' value='Add Space'>
 </form>
 
+<% end %>
+<% unless @user %>
 <form action="/users/new" method="get">
   <input type="submit" value="Sign up" />
 </form>
+<% end %>
