@@ -11,6 +11,8 @@
 </form>
 
 <% end %>
+<% unless @user %>
 <form action="/users/new" method="get">
   <input type="submit" value="Sign up" />
 </form>
+<% end %>
