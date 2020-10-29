@@ -24,6 +24,7 @@ require 'rspec'
 require 'simplecov'
 require_relative '../app'
 require_relative './setup_test_database.rb'
+require 'features/web_helper.rb'
 
 Capybara.app = BnbManager
 
