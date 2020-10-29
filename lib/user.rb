@@ -1,10 +1,12 @@
 require 'pg'
 require_relative 'connection'
 require_relative '../database_connection.rb'
+require 'bcrypt'
 
 class User
   def self.create(email:, password:, display_name:)
     result = Connection.query("INSERT INTO users (email, password, display_name) VALUES ('#{email}', '#{password}', '#{display_name}') RETURNING id, email, password, display_name;")
+    encrypted_password = BCrypt::Password.create(password)
     User.new(id: result[0]['id'],
       email: result[0]['email'],
       password: result[0]['password'],
