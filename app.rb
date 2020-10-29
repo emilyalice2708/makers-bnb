@@ -4,9 +4,11 @@ require_relative './lib/space'
 require_relative './database_connection.rb'
 require_relative './lib/connection'
 require_relative './lib/user.rb'
+require 'sinatra/flash'
 
 class BnbManager < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
 
   run! if app_file == $0
 
@@ -56,9 +58,13 @@ class BnbManager < Sinatra::Base
   post '/sessions' do
 
     user = User.authenticate(email: params[:email], password: params[:password])
-    session[:user_id] = user.id
-
-    redirect '/spaces'
+    if user
+      session[:user_id] = user.id
+      redirect '/spaces'
+    else 
+      flash[:notice] = 'Check your email or password'
+      redirect('/sessions/new')
+    end
   end
 
   post '/sessions/destroy' do
