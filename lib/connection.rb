@@ -1,6 +1,7 @@
 require 'pg'
 
 class Connection
+
   def self.connect(dbname)
     @connection = PG.connect(dbname: dbname)
   end
