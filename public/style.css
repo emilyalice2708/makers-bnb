@@ -1,0 +1,28 @@
+body {
+    background-color: rgb(155, 221, 250);
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.login {
+    background-color: rgb(32, 77, 97);
+    font-family: 'Courier New', Courier, monospace;
+    float: right;
+}
+
+input {
+    width: 50% padding: 12px 20px;
+    margin: 8px 0;
+    background-color: white;
+    border: 2px black;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.user_data {
+    font-weight: bold;
+}

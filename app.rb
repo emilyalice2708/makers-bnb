@@ -6,14 +6,16 @@ require_relative './lib/connection'
 require_relative './lib/user.rb'
 require 'sinatra/flash'
 
+
 class BnbManager < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
+  set :public_folder, File.expand_path('./public', __dir__)
 
   run! if app_file == $0
 
   get '/' do
-    erb :index
+    redirect to '/spaces'
   end
 
   get '/spaces' do
