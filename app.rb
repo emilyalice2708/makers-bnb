@@ -40,5 +40,9 @@ class BnbManager < Sinatra::Base
     redirect '/spaces'
   end
 
+  get '/spaces/:id' do
+    @space = Space.find(id: params[:id])
+    erb :'spaces/view_space'
+  end
 
 end

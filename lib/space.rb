@@ -27,6 +27,16 @@ class Space
     Space.new(id: result[0]['id'], name: result[0]['name'], description: result[0]['description'], user_id: result[0]['user_id'])
   end
 
+  def self.find(id:)
+    return nil unless id
+    result = Connection.query("SELECT * FROM spaces WHERE id = #{id}")
+    Space.new(id: result[0]['id'], 
+      name: result[0]['name'], 
+      description: result[0]['description'], 
+      user_id: result[0]['user_id']
+    )
+  end
+
   def user_name
     user = User.find(id: @user_id)
     return nil unless user
