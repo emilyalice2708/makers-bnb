@@ -5,9 +5,22 @@ require_relative './database_connection.rb'
 require_relative './lib/connection'
 require_relative './lib/user.rb'
 require 'sinatra/flash'
+require 'sinatra'
+require 'stripe'
+ENV['SECRET_KEY'] = "sk_test_51HhnLmJgx7WFG8VYXHIgNqMgeJZvwsPeMD6PYKEnDgEXwaH21498gHqLBcIZjSdonaUiKY8Z58JTijArSB341KgW0082E8WCqt"
 
 class BnbManager < Sinatra::Base
   enable :sessions
+
+  set :publishable_key, ENV['PUBLISHABLE_KEY']
+  set :secret_key, ENV['SECRET_KEY']
+
+  Stripe.api_key = settings.secret_key
+
+  error Stripe::CardError do
+  env['sinatra.error'].message
+end
+
   register Sinatra::Flash
 
   run! if app_file == $0
@@ -61,7 +74,7 @@ class BnbManager < Sinatra::Base
     if user
       session[:user_id] = user.id
       redirect '/spaces'
-    else 
+    else
       flash[:notice] = 'Check your email or password'
       redirect('/sessions/new')
     end
@@ -70,6 +83,28 @@ class BnbManager < Sinatra::Base
   post '/sessions/destroy' do
     session.clear
     redirect('/spaces')
+  end
+
+  post '/charge' do
+  # Amount in cents
+    @amount = 500
+
+    customer = Stripe::Customer.create({
+      email: params[:email],
+      source: params[:stripeToken],
+    })
+
+    charge = Stripe::Charge.create({
+      amount: @amount,
+      description: 'Sinatra Charge',
+      currency: 'gbp',
+      customer: customer.id,
+    })
+    redirect '/success'
+  end
+
+  get '/success' do
+    erb :charge
   end
 
 end

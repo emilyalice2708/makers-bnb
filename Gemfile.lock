@@ -75,6 +75,7 @@ GEM
       tilt (~> 2.0)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
+    stripe (5.28.0)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     tilt (2.0.10)
@@ -96,6 +97,7 @@ DEPENDENCIES
   simplecov-console
   sinatra
   sinatra-flash
+  stripe
 
 BUNDLED WITH
    2.1.4
