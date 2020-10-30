@@ -1,23 +1,34 @@
-<ul>
-<% @result.each do |space_object|%>
-  <li> <a href='/spaces/<%= space_object.id %>' target="_blank"><%=space_object.name%></a><%=space_object.user_name%><%=space_object.price%>
-<%end%>
-</li>
-</ul>
- <% if @user %>
-  <h1> Welcome, <%= @user.display_name %></h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Makers Bnb</title>
+  </head>
+  <body>
+  <ul>
+  <% @result.each do |space_object|%>
+    <li> <a href='/spaces/<%= space_object.id %>' target="_blank"><%=space_object.name%></a><%=space_object.user_name%><%=space_object.price%>
+  <%end%>
+  </li>
+  </ul>
+  <% if @user %>
+   <h1> Welcome, <%= @user.display_name %></h1>
 
-<form action='/spaces/new' method='get'>
-  <input type='submit' value='Add Space'>
-</form>
-<form action="/sessions/destroy" method="post">
-  <input type="submit" value="Sign out" />
-</form>
+  <form action='/spaces/new' method='get'>
+    <input type='submit' value='Add Space'>
+  </form>
+  <form action="/sessions/destroy" method="post">
+    <input type="submit" value="Sign out" />
+  </form>
 
-<% end %>
-<% unless @user %>
-<form action="/users/new" method="get">
-  <input type="submit" value="Sign up" />
-</form>
-<% end %>
-<h2><%=flash[:notice]%></h2>
+  <% end %>
+  <% unless @user %>
+  <form action="/users/new" method="get">
+    <input type="submit" value="Sign up" />
+  </form>
+  <% end %>
+  <form action="/sessions/new" method="get">
+   <input type="submit" value="Sign in" />
+  </form>
+  </body>
+</html>
