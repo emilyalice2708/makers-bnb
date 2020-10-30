@@ -1,6 +1,6 @@
 <ul>
 <% @result.each do |space_object|%>
-  <li> <a href='/spaces/<%= space_object.id %>' target="_blank"><%=space_object.name%></a><%=space_object.user_name%>
+  <li> <a href='/spaces/<%= space_object.id %>' target="_blank"><%=space_object.name%></a><%=space_object.user_name%><%=space_object.price%>
 <%end%>
 </li>
 </ul>

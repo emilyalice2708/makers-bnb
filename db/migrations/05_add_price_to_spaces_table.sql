@@ -1,0 +1,1 @@
+ALTER TABLE spaces ADD COLUMN price VARCHAR(10);
