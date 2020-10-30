@@ -9,6 +9,7 @@ require 'sinatra'
 require 'stripe'
 ENV['SECRET_KEY'] = "sk_test_51HhnLmJgx7WFG8VYXHIgNqMgeJZvwsPeMD6PYKEnDgEXwaH21498gHqLBcIZjSdonaUiKY8Z58JTijArSB341KgW0082E8WCqt"
 
+
 class BnbManager < Sinatra::Base
   enable :sessions
 
@@ -22,11 +23,12 @@ class BnbManager < Sinatra::Base
 end
 
   register Sinatra::Flash
+  set :public_folder, File.expand_path('./public', __dir__)
 
   run! if app_file == $0
 
   get '/' do
-    erb :index
+    redirect to '/spaces'
   end
 
   get '/spaces' do

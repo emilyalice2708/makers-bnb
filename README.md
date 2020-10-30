@@ -5,7 +5,7 @@
 
 1. Clone this repository:
 ```
-git clone
+git clone <repo_name>
 ```
 2. Run bundle install:
 ```
@@ -111,5 +111,25 @@ I would like to be able to click on a name and see a description.
 ## Diagramming
 
 ![Diagram](https://i.imgur.com/0n0V5WK.png)
+
+#### Class: User
+|Responsibilities|Collaborators|
+|----------|-----------|
+|Knows email||
+|Knows password||
+|Knows display name||
+|Can create a new user (.create)||
+|Can list a space|Space|
+
+#### Class: Space
+|Responsibilities|Collaborators|
+|----------|-----------|
+|Knows name||
+|Knows description||
+|Knows price per night||
+|Knows which user it belongs to|User|
+|Can return all spaces (.all)||
+|Can create a new space (.create)||
+		
 
 

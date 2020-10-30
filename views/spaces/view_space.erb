@@ -1,7 +1,16 @@
-<%= @space.name %>
-<%= @space.description %>
-<%= @space.price %>
-<form action="/charge" method="post" class="payment">
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <title>Makers Bnb</title>
+  </head>
+  <body>
+    <p><%= @space.name %></p>
+    <p><%= @space.description %></p>
+    <p>Price per night: <%= @space.price %></p>
+    
+    <form action="/charge" method="post" class="payment">
   <article>
     <label class="amount">
       <span>Amount £<%= @space.price %></span>
@@ -15,4 +24,7 @@
           data-currency=gbp
           >
     </script>
-</form>
+  </form>
+  </body>
+</html>
+
