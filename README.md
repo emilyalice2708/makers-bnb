@@ -5,7 +5,7 @@
 
 1. Clone this repository:
 ```
-git clone
+git clone <repo_name>
 ```
 2. Run bundle install:
 ```
