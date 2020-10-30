@@ -10,7 +10,7 @@ require 'sinatra/flash'
 class BnbManager < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
-  set :public_folder, File.expand_path('/public', __dir__)
+  set :public_folder, File.expand_path('./public', __dir__)
 
   run! if app_file == $0
 
